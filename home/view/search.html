@@ -1,0 +1,38 @@
+<?php
+defined('shouing') or die('Access is denied.');
+include './view/header.html';
+?>
+<!--面包屑导航-->
+<div class="path">
+    <a href=".">网站首页</a>
+    <i class="path-split">\</i>
+    <span>搜索"<?php echo $key;?>"结果</span>
+</div>
+
+<!--帖子列表-->
+<ul class="box theme-list">
+    <?php foreach($theme as $v){ ?>
+    <li class="theme-item">
+        <a href="theme-<?php echo $v['id'];?>.html">
+            <p><i class="top"></i><?php echo $v['title'];?></p>
+            <p class="theme-item-detail clearfix">
+                <span><i class="icon icon-people"></i><?php echo $v['nickname'];?></span>
+                <span><i class="icon icon-time"></i><?php echo $v['create_time'];?></span>
+                <span class="right"><i class="icon icon-comment"></i><?php echo $v['reply_num'];?></span>
+                <span class="right"><i class="icon icon-browse"></i><?php echo $v['read_num'];?></span>
+            </p>
+        </a>
+    </li>
+    <?php }?>
+    <?php if(empty($theme)){?>
+    <div class="empty">没有搜索到任何结果</div>
+    <?php } ?>
+</ul>
+
+<!--显示页码-->
+<div class="page">
+    <?php echo $page_show;?>
+    <a class="page-redirect" style="display: none;" href="javascript:void(0);">跳转</a>
+</div>
+<?php include './view/footer.html';?>
+

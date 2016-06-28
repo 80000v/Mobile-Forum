@@ -1,0 +1,42 @@
+<?php
+defined('shouing') or die('Access is denied.');
+include './view/header.html';
+?>
+<!--面包屑导航-->
+<div class="box path">
+    <a href=".">管理后台</a>
+    <i class="path-split">\</i>
+    <a href="user.html">用户管理</a>
+    <i class="path-split">\</i>
+    <span>用户修改</span>
+</div>
+
+<!--登录or注册选项卡-->
+<div class="box">
+    <h2>用户修改</h2>
+    <form action="" method="post" id="login" class="form">
+
+
+        <input type="text" data-pattam=".+?" value="<?php echo $user['username'];?>" disabled/>
+        <input type="text" data-pattam=".+?" placeholder="用户昵称，必填" value="<?php echo $user['nickname'];?>" name="nickname">
+        <input type="text" data-pattam="^(1[23578]\d{9}|)$" placeholder="手机号,非必填" value="<?php echo $user['phone'];?>" name="phone">
+        <input type="text" data-pattam="^\w+(\.\w+)*?@\w+?(\.\w+)+?$" placeholder="邮箱,必填"
+               value="<?php echo $user['email'];?>" name="email">
+        <textarea name="info" id="" cols="30" rows="3" placeholder="个性签名,非必填"><?php echo $user['info'];?></textarea>
+        <div class="form-line radio">
+            <label><input type="radio" name="sex" <?php if($user['sex'] == 0) echo 'checked';?> value="0">未知</label>
+            <label><input type="radio" name="sex" <?php if($user['sex'] == 1) echo 'checked';?> value="1">男生</label>
+            <label><input type="radio" name="sex" <?php if($user['sex'] == 2) echo 'checked';?> value="2">女生</label>
+        </div>
+
+        <div class="form-line">
+            <label><input type="radio" name="status" value="0" <?php if($user['status']==0) echo 'checked';?>>正常</label>
+            <label><input type="radio" name="status" value="1" <?php if($user['status']==1) echo 'checked';?>>锁定</label>
+            <label><input type="radio" name="status" value="2" <?php if($user['status']==2) echo 'checked';?>>未审核</label>
+        </div>
+
+        <input type="submit" value="保存修改"/>
+    </form>
+
+</div>
+<?php include './view/footer.html';?>

@@ -1,0 +1,37 @@
+<?php
+defined('shouing') or die('Access is denied.');
+include './view/header.html';
+?>
+<!--面包屑导航-->
+<div class="box path">
+    <a href=".">网站首页</a>
+    <i class="path-split">\</i>
+    <a href="section-<?php echo $section['id'];?>.html"><?php echo $section['name'];?></a>
+    <i class="path-split">\</i>
+    <span>发表帖子</span>
+</div>
+<!--登录or注册选项卡-->
+<div class="box">
+    <h2>发表帖子</h2>
+    <form action="" method="post" id="register" class="form">
+        <input type="text" data-pattam="[\s\S]{5,}" name="title" placeholder="帖子标题，不少于5个字"/>
+        <textarea id="upload-textarea" data-pattam="[\s\S]{15,}" name="content" cols="30" rows="5" placeholder="帖子内容，不少于15字"></textarea>
+        <div class="form-line">
+            <a class="edit-upload" href="javascript:void(0);" data-url="theme-images.html">
+                <i class="icon icon-pic"></i>图片
+            </a>
+            <a class="edit-upload" href="javascript:void(0);" data-url="attachment-upload.html">
+                <i class="icon icon-attachment"></i>附件
+            </a>
+            <label>下载所需积分<input type="text" id="price"/></label>
+        </div>
+        <div class="clearfix">
+            <input type="text" data-pattam=".+?" name="code" placeholder="验证码"/>
+            <img src="verify.html" id="verify_code">
+        </div>
+        <input type="hidden" name="bid" value="<?php echo $section['id'];?>">
+        <input type="submit" value="立即发表"/>
+    </form>
+
+</div>
+<?php include './view/footer.html';?>

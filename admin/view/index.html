@@ -1,0 +1,31 @@
+<?php
+defined('shouing') or die('Access is denied.');
+include './view/header.html';
+?>
+<!--基本管理-->
+<div class="box">
+    <h2>基本管理</h2>
+
+    <div class="inline-list">
+        <a href="section.html">版块管理</a>
+        <a href="moderator.html">版主管理</a>
+        <a href="attachment.html">附件管理</a>
+        <a href="user.html">用户管理</a>
+    </div>
+</div>
+<!--垃圾管理-->
+<div class="box">
+    <h2>垃圾管理</h2>
+    <div class="inline-list">
+        <a href="clear-images.html">清空图片</a>
+        <a href="clear-message.html">清空消息</a>
+    </div>
+</div>
+
+<div class="box">
+    <h2>后台管理</h2>
+    <div class="inline-list">
+        <a href="admin-password.html">管理密码修改</a>
+    </div>
+</div>
+<?php include './view/footer.html';?>

@@ -1,0 +1,24 @@
+<?php
+defined('shouing') or die('Access is denied.');
+include './view/header.html';
+?>
+<!--面包屑导航-->
+<div class="box path">
+    <a href=".">网站首页</a>
+    <i classs="path-split">\</i>
+    <span><?php echo $title;?></span>
+</div>
+<div class="box">
+    <h2>附件下载</h2>
+    <ul class="info-list">
+        <li><span>文件名</span><span><?php echo $file['old_name'];?></span></li>
+        <li><span>文件大小</span><span><?php echo $file['size'];?></span></li>
+        <li><span>文件所属用户</span><span><a href="user-<?php echo $file['user_id'];?>.html"><?php echo $file['username'];?></span></a></li>
+        <li><span>下载所需积分</span><span><?php echo $file['price'];?></span></li>
+        <li><span>我的积分</span><span><?php echo $user['credits'];?></span></li>
+        <li><span>下载地址</span><span><a href="attachment-download-<?php echo $file['id'];?>.html">点击下载</a></span></li>
+    </ul>
+</div>
+
+
+<?php include './view/footer.html';?>

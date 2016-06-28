@@ -1,0 +1,116 @@
+<?php
+defined('shouing') or die('Access is denied.');
+include './view/header.html';
+?>
+<!--面包屑-->
+<div class="box path">
+    <a href=".">网站首页</a>
+    <i class="path-split">\</i>
+    <a href="section-<?php echo $section['id'];?>.html"><?php echo $section['name'];?></a>
+    <i class="path-split">\</i>
+    <span>帖子详情</span>
+</div>
+<!--帖子-->
+<div class="box theme">
+    <!--标题-->
+    <h1 class="theme-title">
+        <?php if($theme['top'] == 1) echo '<i class="icon icon-top"></i>';?>
+        <?php if($theme['status'] == 1) echo '<i class="icon icon-lock"></i>';?>
+        <?php echo $theme['title'];?>
+    </h1>
+    <!--详细-->
+    <div class="theme-detail">
+        <span><i class="icon icon-time"></i><?php echo $theme['create_time'];?></span>
+        <span><i class="icon icon-browse"></i><?php echo $theme['read_num'];?></span>
+    </div>
+    <!--内容-->
+    <div class="theme-content">
+        <?php echo $theme['content'];?>
+        <?php if($theme['modify']){ ?>
+            <div class="theme-content-note">
+                最后修改于<?php echo $theme['modify_time'];?>
+            </div>
+        <?php } ?>
+    </div>
+    <!--动作-->
+    <div class="theme-active">
+        <!--点赞-->
+        <a class="praise" href="theme-praise-<?php echo $theme['id'];?>.html">
+            <i class="icon <?php echo $like;?>"></i>
+            <span class="praise-num"><?php echo $theme['praise_num'];?></span>
+        </a>
+        <!--收藏-->
+        <a class="collection" href="collection-toggle-<?php echo $theme['id'];?>.html">
+            <i class="icon <?php echo $favor;?>"></i>
+        </a>
+    </div>
+</div>
+<!--用户信息卡片-->
+<div class="box user-card">
+    <a href="user-<?php echo $author['id'];?>.html">
+        <img class="user-card-portrait" src="<?php echo $author['icon'];?>"/>
+    </a>
+    <div class="user-card-info">
+        <h2><a href="user-<?php echo $author['id'];?>.html"><?php echo $author['nickname'];?></a></h2>
+        <p><?php echo $author['info'];?></p>
+    </div>
+</div>
+
+<!--//管理-->
+<?php if($is_master || $is_moder){ ?>
+<div class="box inline-list">
+    <span>管理</span>
+    <?php if($is_master){ ?>
+    <a href="theme-modify-<?php echo $theme['id'];?>.html">编辑</a>
+    <?php }?>
+    <a class="theme-lock" href="theme-lock-<?php echo $theme['id'];?>.html"><?php echo $lock;?></a>
+    <a class="theme-del" href="theme-delete-<?php echo $theme['id'];?>.html">删帖</a>
+    <!--//置定操作-->
+    <?php if($is_moder){ ?>
+    <a class="theme-top" href="theme-top-<?php echo $theme['id'];?>.html"><?php echo $top;?></a>
+    <?php }?>
+</div>
+<?php } ?>
+
+<!--帖子评论-->
+<div class="box">
+    <h2>回复列表</h2>
+    <ul class="reply-list">
+        <?php foreach($reply as $v){ ?>
+        <li class="reply-item clearfix">
+            <div class="reply-item-left">
+                <a href="user-<?php echo $v['uid'];?>.html">
+                    <img src="<?php echo $v['icon'];?>" alt="<?php echo $v['nickname'];?>">
+                </a>
+                <p>#<?php echo $v['cnt'];?></p>
+            </div>
+            <div class="reply-item-right">
+                <div>
+                    <a href="user-<?php echo $v['uid'];?>.html"><?php echo $v['nickname'];?></a>
+                    <a class="right reply-user" data-uid="<?php echo $v['uid'];?>" data-nickname="<?php echo $v['nickname'];?>" href="javascript:void(0);">回复</a>
+                    <span class="reply-item-time"><i class="icon icon-time"></i><?php echo $v['create_time'];?></span>
+                </div>
+                <div>
+                    <?php echo $v['content'];?>
+                </div>
+            </div>
+        </li>
+        <?php } ?>
+    </ul>
+    <!--评论表单框-->
+    <form action="theme-reply-<?php echo $theme['id'];?>.html" method="post" class="edit">
+        <textarea id="upload-textarea" name="content" class="edit-area" placeholder="评论内容不能少于5个字"></textarea>
+        <input type="hidden" id="uid-input" name="reply_uid" value="">
+        <ul class="edit-btn">
+            <li><a class="edit-upload" href="javascript:void(0);" data-url="theme-images.html"><i
+                    class="icon icon-pic"></i></a></li>
+            <li><a class="edit-upload" href="javascript:void(0);" data-url="attachment-upload.html"><i
+                    class="icon icon-attachment"></i></a></li>
+            <li><a class="edit-smt" href="javascript:void(0);"><i class="icon icon-iconfasong"></i></a></li>
+        </ul>
+    </form>
+
+
+</div>
+
+<?php include './view/footer.html';?>

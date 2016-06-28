@@ -1,0 +1,27 @@
+<?php
+defined('shouing') or die('Access is denied.');
+?>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title><?php echo $title;?></title>
+    <meta name="keywords" content="<?php echo config('site_keywords');?>">
+    <meta name="description" content="<?php echo config('site_description');?>">
+    <link rel="stylesheet" href="<?php echo url_static;?>css/reset.css">
+    <link rel="stylesheet" href="<?php echo url_static;?>css/main.css">
+    <link rel="stylesheet" href="<?php echo url_static;?>css/iconfont.css">
+    <script src="<?php echo url_static;?>js/fastclick.js"></script>
+    <script src="<?php echo url_static;?>js/jquery-2.1.4.min.js"></script>
+    <script src="<?php echo url_static;?>js/ajaxupload.3.9.js"></script>
+    <script src="<?php echo url_static;?>js/main.js"></script>
+</head>
+<body>
+<!--顶部导航-->
+<div class="box top-nav">
+    <a href="."><i class="icon icon-home"></i><?php echo config('site_name');?></a>
+    <a href="user.html"><i class="icon icon-people"></i>个人</a>
+    <a href="friend.html"><i class="icon icon-friend"></i>好友</a>
+    <a href="message.html"><i class="icon icon-message"></i>消息<?php echo '(',db_field('select count(*) from wlz_message where user_id="'.session('uid').'" and status=0'),')';?></a>
+</div>

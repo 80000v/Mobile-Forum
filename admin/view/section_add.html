@@ -1,0 +1,34 @@
+<?php
+defined('shouing') or die('Access is denied.');
+include './view/header.html';
+?>
+<!--面包屑导航-->
+<div class="box path">
+    <a href=".">管理后台</a>
+    <i class="path-split">\</i>
+    <a href="section.html">版块管理</a>
+    <i class="path-split">\</i>
+    <span>版块添加</span>
+</div>
+
+<!--登录or注册选项卡-->
+<div class="box">
+    <h2>版块添加</h2>
+    <form action="" method="post" id="section_add" class="form">
+        <input type="text" data-pattam=".+?" name="name" placeholder="版块名"/>
+
+        <textarea name="info" placeholder="版块简介" cols="30" rows="3"></textarea>
+
+        <input type="text" data-pattam="^\d+|$" name="order_value" placeholder="顺序，>=0">
+
+        <div class="form-line">
+            <label><input type="radio" name="status" value="0" checked>正常</label>
+            <label><input type="radio" name="status" value="1">关闭</label>
+        </div>
+
+        <input type="submit" value="添加版块"/>
+    </form>
+
+</div>
+
+<?php include './view/footer.html';?>

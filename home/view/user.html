@@ -1,0 +1,57 @@
+<?php
+defined('shouing') or die('Access is denied.');
+include './view/header.html';
+?>
+
+<!--面包屑导航-->
+<div class="box path">
+    <a href=".">网站首页</a>
+    <i class="path-split">\</i>
+    <span><?php echo $title;?></span>
+</div>
+
+<!--用户卡片，显示用户大概信息-->
+<div class="box user-card">
+    <img class="user-card-portrait" src="<?php echo $user['icon'];?>" <?php if($is_own) echo 'data-url="./user-icon.html" id="portrait"';?>/>
+    <div class="user-card-info">
+        <h2><?php echo $user['nickname'];?></h2>
+        <p><?php echo $user['info'];?></p>
+    </div>
+</div>
+
+<!--个人账户-->
+<div class="box inline-list">
+    <span><?php echo $is_own ? '我的' : 'Ta的';?></span>
+    <a href="user-theme-<?php echo $user['id'];?>.html">帖子</a>
+    <a href="user-reply-<?php echo $user['id'];?>.html">回复</a>
+    <a href="collection-<?php echo $user['id'];?>.html">收藏</a>
+</div>
+
+<!--动作-->
+<div class="box inline-list">
+    <?php if($is_own){ ?>
+    <span>设置</span>
+    <a href="user-modify.html">资料</a>
+    <a href="user-password.html">密码</a>
+    <a href="user-logout.html">退出</a>
+    <?php }else{ ?>
+    <span>动作</span>
+    <a class="toggle-friend" href="friend-toggle-<?php echo $user['id'];?>.html"><?php echo $friend_action;?></a>
+    <?php } ?>
+</div>
+<!--个人信息-->
+<div class="box">
+    <h2>用户信息</h2>
+    <ul class="info-list">
+        <li><span>账号</span><span><?php echo $user['username'];?></span></li>
+        <li><span>积分</span><span><?php echo $user['credits'];?></span></li>
+        <li><span>性别</span><span><?php echo $user['sex'];?></span></li>
+        <li><span>手机号</span><span><?php echo $user['phone'];?></span></li>
+        <li><span>邮箱</span><span><?php echo $user['email'];?></span></li>
+        <li><span>状态</span> <span><?php echo $user['status'];?></span></li>
+        <li><span>注册时间</span> <span><?php echo $user['create_time'];?></span></li>
+        <li><span>最后登录时间</span><span><?php echo $user['login_time'];?></span></li>
+        <li><span>最后登录ip</span><span><?php echo $user['login_ip'];?></span></li>
+    </ul>
+</div>
+<?php include './view/footer.html';?>

@@ -1,0 +1,39 @@
+<?php
+defined('shouing') or die('Access is denied.');
+include './view/header.html';
+?>
+<!--面包屑导航-->
+<div class="box path">
+    <a href=".">网站首页</a>
+    <i class="path-split">\</i>
+    <a href="user-<?php echo $user['id'];?>.html"><?php echo $user['nickname'];?>的空间</a>
+    <i class="path-split">\</i>
+    <span>帖子列表</span>
+</div>
+<!--收藏列表-->
+<ul class="box theme-list">
+    <?php foreach($theme as $v){ ?>
+    <li class="theme-item">
+        <a href="theme-<?php echo $v['id'];?>.html">
+            <p><i class="top"></i><?php echo $v['title'];?></p>
+            <div class="theme-item-detail clearfix">
+                <span><i class="icon icon-people"></i><?php echo $v['nickname'];?></span>
+                <span><i class="icon icon-time"></i><?php echo $v['create_time'];?></span>
+                <span class="right"><i class="icon icon-comment"></i><?php echo $v['reply_num'];?></span>
+                <span class="right"><i class="icon icon-browse"></i><?php echo $v['read_num'];?></span>
+            </div>
+        </a>
+    </li>
+    <?php } ?>
+    <?php if(empty($theme)){ ?>
+    <div class="empty">还没有发布过任何帖子</div>
+    <?php } ?>
+</ul>
+
+
+<!--显示页码-->
+<div class="page">
+    <?php echo $page_show;?>
+    <a class="page-redirect" style="display: none;" href="javascript:void(0);">跳转</a>
+</div>
+<?php include './view/footer.html';?>

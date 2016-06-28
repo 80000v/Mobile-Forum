@@ -1,0 +1,30 @@
+<?php
+defined('shouing') or die('Access is denied.');
+include './view/header.html';
+?>
+<!--面包屑导航-->
+<div class="box path">
+    <a href=".">网站首页</a>
+    <i class="path-split">\</i>
+    <a href="user.html">个人空间</a>
+    <i class="path-split">\</i>
+    <span>资料修改</span>
+</div>
+
+<!--个人信息-->
+<div class="box">
+    <form action="" method="post" class="form" id="user-modify">
+        <input type="text" data-pattam=".+?" placeholder="用户昵称，必填" value="<?php echo $user['nickname'];?>" name="nickname">
+        <input type="text" data-pattam="^(1[23578]\d{9}|)$" placeholder="手机号,非必填" value="<?php echo $user['phone'];?>" name="phone">
+        <input type="text" data-pattam="^\w+(\.\w+)*?@\w+?(\.\w+)+?$" placeholder="邮箱,必填"
+               value="<?php echo $user['email'];?>" name="email">
+        <textarea name="info" id="" cols="30" rows="3" placeholder="个性签名,非必填"><?php echo $user['info'];?></textarea>
+        <div class="form-line radio">
+            <label><input type="radio" name="sex" <?php if($user['sex'] == 0) echo 'checked';?> value="0">未知</label>
+            <label><input type="radio" name="sex" <?php if($user['sex'] == 1) echo 'checked';?> value="1">男生</label>
+            <label><input type="radio" name="sex" <?php if($user['sex'] == 2) echo 'checked';?> value="2">女生</label>
+        </div>
+        <input type="submit" value="保存修改">
+    </form>
+</div>
+<?php include './view/footer.html';?>

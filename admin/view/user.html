@@ -1,0 +1,36 @@
+<?php
+defined('shouing') or die('Access is denied.');
+include './view/header.html';
+?>
+<!--面包屑导航-->
+<div class="box path">
+    <a href="index.html">管理后台</a>
+    <i class="path-split">\</i>
+    <span>用户管理</span>
+</div>
+
+<div class="box">
+    <table>
+        <tr>
+            <th>用户名</th>
+            <th>用户昵称</th>
+            <th>状态</th>
+            <th>操作</th>
+        </tr>
+        <?php foreach($users as $v){ ?>
+        <tr>
+            <td><?php echo $v['username'];?></td>
+            <td><?php echo $v['nickname'];?></td>
+            <td><?php echo $v['status'];?></td>
+            <td>
+                <a href="user-modify-<?php echo $v['id'];?>.html">修改</a>
+            </td>
+        </tr>
+        <?php } ?>
+    </table>
+</div>
+<div class="page">
+    <?php echo $page_show;?>
+    <a class="page-redirect" style="display: none;" href="javascript:void(0);">跳转</a>
+</div>
+<?php include './view/footer.html';?>

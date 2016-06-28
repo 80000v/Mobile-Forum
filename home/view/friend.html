@@ -1,0 +1,29 @@
+<?php
+defined('shouing') or die('Access is denied.');
+include './view/header.html';
+?>
+<!--面包屑导航-->
+<div class="box path">
+    <a href=".">网站首页</a>
+    <i class="path-split">\</i>
+    <span>好友列表</span>
+</div>
+<!--好友列表-->
+<ul class="box user-list">
+    <?php foreach($friend as $v){ ?>
+    <li class="user-item">
+        <a href="user-<?php echo $v['id'];?>.html">
+            <img src="<?php echo $v['icon'];?>" alt=""><span><?php echo $v['nickname'];?></span>
+        </a>
+    </li>
+    <?php } ?>
+    <?php if(empty($friend)){ ?>
+    <div class="empty">你还没有添加好友</div>
+    <?php } ?>
+</ul>
+<!--显示页码-->
+<div class="page">
+    <?php echo $page_show;?>
+    <a class="page-redirect" style="display: none;" href="javascript:void(0);">跳转</a>
+</div>
+<?php include './view/footer.html';?>

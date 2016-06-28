@@ -1,0 +1,44 @@
+<?php
+defined('shouing') or die('Access is denied.');
+include './view/header.html';
+?>
+<!--面包屑导航-->
+<div class="path">
+    <a href=".">管理后台</a>
+    <i class="path-split">\</i>
+    <span>版块管理</span>
+</div>
+
+<!--//功能条-->
+<div class="box inline-list">
+    <span>功能</span><a href="section-add.html">添加版块</a>
+</div>
+
+<div class="box">
+    <table>
+        <tr>
+            <th>id</th>
+            <th>排序值</th>
+            <th>版块名</th>
+            <th>图标</th>
+            <th>状态</th>
+            <th>操作</th>
+        </tr>
+        <?php foreach($sections as $v){ ?>
+        <tr>
+            <td><?php echo $v['id'];?></td>
+            <td><?php echo $v['order_value'];?></td>
+            <td><?php echo $v['name'];?></td>
+            <td>
+                <img width="50" height="50" src="<?php echo $v['icon'];?>" class="section-icon" data-url="section-icon-<?php echo $v['id'];?>.html">
+            </td>
+            <td><?php echo $v['status'];?></td>
+            <td>
+                <a href="section-delete-<?php echo $v['id'];?>.html" class="section-del">删除</a>
+                <a href="section-modify-<?php echo $v['id'];?>.html">修改</a>
+            </td>
+        </tr>
+         <?php }?>
+    </table>
+</div>
+<?php include './view/footer.html';?>

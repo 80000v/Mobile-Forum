@@ -1,0 +1,30 @@
+<?php
+defined('shouing') or die('Access is denied.');
+include './view/header.html';
+?>
+<!--面包屑导航-->
+<div class="box path">
+    <a href=".">网站首页</a>
+    <i class="path-split">\</i>
+    <span>用户注册</span>
+</div>
+<!--登录or注册选项卡-->
+<div class="box">
+    <h2>用户注册</h2>
+    <form action="" method="post" id="register" class="form">
+        <input type="text" data-pattam="^\w{1,20}$" name="username" placeholder="帐号,1-16数字字母组成"/>
+        <input type="password" data-pattam="^\w{6,16}$" name="password" placeholder="密码，6-16数字字母组成"/>
+        <input type="text" data-pattam="^\S{2,20}$" name="nickname" placeholder="昵称，2-20字符"/>
+        <input type="text" data-pattam="^\w+(\.\w+)*?@\w+?(\.\w+)+?$" name="email" placeholder="邮箱，用于找回密码">
+        <label class="clearfix">
+            <input type="text" data-pattam=".+?" name="code" placeholder="验证码"/>
+            <img src="./verify.html" id="verify_code">
+        </label>
+        <input type="submit" value="立即注册"/>
+    </form>
+</div>
+<!--其它操作-->
+<div class="box inline-list">
+    <span>其它</span><a href="./visit-login.html">登录</a><a href="./visit-findpwd.html">找回密码</a>
+</div>
+<?php include './view/footer.html';?>

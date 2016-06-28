@@ -1,0 +1,18 @@
+<?php
+defined('shouing') or die('Access is denied.');
+include './view/header.html';
+?>
+<div class="notice-page">
+    <i class="icon icon-warn"></i>
+    <h1><?php echo $info;?></h1>
+</div>
+<?php if(isset($data['url'])) {?>
+<script>
+    //存在URL，2秒后必须要跳转
+    setTimeout(function(){
+        window.location.href = "<?php echo $data['url'];?>";
+    },2000);
+
+</script>
+<?php } ?>
+<?php include './view/footer.html';?>

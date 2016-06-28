@@ -1,0 +1,32 @@
+<?php
+defined('shouing') or die('Access is denied.');
+include './view/header.html';
+?>
+<!--面包屑导航-->
+<div class="box path">
+    <a href=".">网站首页</a>
+    <i class="path-split">\</i>
+    <a href="user-<?php echo $user['id'];?>.html"><?php echo $user['nickname'];?>的空间</a>
+    <i class="path-split">\</i>
+    <span>回复列表</span>
+</div>
+<!--收藏列表-->
+<ul class="box simple-list">
+    <?php foreach($reply as $v){ ?>
+    <li class="simple-item">
+        <a href="theme-<?php echo $v['theme_id'];?>.html">
+            <span><?php echo $v['create_time'];?></span>
+            <p><?php echo $v['content'];?></p>
+        </a>
+    </li>
+    <?php } ?>
+    <?php if(empty($reply)){ ?>
+    <div class="empty">还没有回复过任何帖子</div>
+    <?php } ?>
+</ul>
+<!--显示页码-->
+<div class="page">
+    <?php echo $page_show;?>
+    <a class="page-redirect" style="display: none;" href="javascript:void(0);">跳转</a>
+</div>
+<?php include './view/footer.html';?>

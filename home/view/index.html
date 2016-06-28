@@ -1,0 +1,88 @@
+<?php
+defined('shouing') or die('Access is denied.');
+include './view/header.html';
+?>
+<!--搜索框-->
+<div>
+    <form action="search.html" method="get" class="search">
+        <input type="text" name="key" placeholder="请输入关键字">
+        <i class="icon icon-search search-btn"></i>
+    </form>
+</div>
+<!--列表选项卡-->
+<div class="box tabs">
+    <ul class="tabs-title">
+        <li class="active">上升</li>
+        <li>新帖</li>
+        <li>点赞量</li>
+        <li>阅读量</li>
+    </ul>
+    <ul class="tabs-content">
+        <li style="display: block">
+            <ul class="simple-list">
+                <?php foreach($theme_dynamic as $v){ ?>
+                <li class="simple-item">
+                    <a href="theme-<?php echo $v['id'];?>.html">
+                        <span><?php echo $v['reply_time'];?></span>
+                        <p><?php echo $v['title'];?></p>
+                    </a>
+                </li>
+                <?php } ?>
+            </ul>
+        </li>
+        <li>
+            <ul class="simple-list">
+                <?php foreach($theme_new as $v){ ?>
+                <li class="simple-item">
+                    <a href="theme-<?php echo $v['id'];?>.html">
+                        <span><?php echo $v['create_time'];?></span>
+                        <p><?php echo $v['title'];?></p>
+                    </a>        
+                </li>
+                <?php } ?>
+            </ul>
+        </li>
+        <li>
+            <ul class="simple-list">
+                <?php foreach($theme_praise as $v){ ?>
+                <li class="simple-item">
+                    <a href="theme-<?php echo $v['id'];?>.html">
+                        <span><?php echo $v['praise_num'];?></span>
+                        <p><?php echo $v['title'];?></p>
+                    </a>
+                </li>
+                <?php } ?>
+            </ul>
+        </li>
+        <li>
+            <ul class="simple-list">
+                <?php foreach($theme_read as $v){ ?>
+                <li class="simple-item">
+                     <a href="theme-<?php echo $v['id'];?>.html">
+                        <span><?php echo $v['read_num'];?></span>
+                        <p><?php echo $v['title'];?></p>
+                    </a>
+                </li>
+                <?php } ?>
+            </ul>
+        </li>
+    </ul>
+</div>
+<!-- 版块列表 -->
+<ul class="box section-list">
+    <?php foreach($forums as $v){ ?>
+    <li class="section-item">
+        <a class="clearfix" href="section-<?php echo $v['id'];?>.html">
+            <div class="section-item-icon">
+                <img src="<?php echo $v['icon'];?>" alt="<?php echo $v['name'];?>"/>
+            </div>
+            <div class="section-item-info">
+                <h2><?php echo $v['name'];?></h2>
+                <p>主题:<?php echo $v['theme_num'];?></p>
+            </div>
+        </a>
+    </li>
+    <?php }?>
+</ul>
+
+<?php include './view/footer.html';?>

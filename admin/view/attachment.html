@@ -1,0 +1,40 @@
+<?php
+defined('shouing') or die('Access is denied.');
+include './view/header.html';
+?>
+<!--面包屑导航-->
+<div class="box path">
+    <a href=".">管理后台</a>
+    <i class="path-split">\</i>
+    <span><?php echo $title;?></span>
+</div>
+
+<!--登录or注册选项卡-->
+<div class="box">
+    <table>
+        <tr>
+            <th>附件名</th>
+            <th>上传时间</th>
+            <th>大小</th>
+            <th>价格</th>
+            <th>操作</th>
+        </tr>
+        <?php foreach($attachments as $v){ ?>
+        <tr>
+            <td><a href="<?php echo $v['new_name'];?>"><?php echo $v['old_name'];?></a></td>
+            <td><?php echo $v['create_time'];?></td>
+            <td><?php echo $v['size'];?></td>
+            <td><?php echo $v['price'];?></td>
+            <td>
+                <a class="attachment-del" href="attachment-del-<?php echo $v['id'];?>.html">删除</a>
+                <a href="attachment-modify-<?php echo $v['id'];?>.html">修改</a>
+            </td>
+        </tr>
+        <?php } ?>
+    </table>
+</div>
+<div class="page">
+    <?php echo $page_show;?>
+    <a class="page-redirect" style="display: none;" href="javascript:void(0);">跳转</a>
+</div>
+<?php include './view/footer.html';?>

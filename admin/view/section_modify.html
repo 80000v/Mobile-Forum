@@ -1,0 +1,35 @@
+<?php
+defined('shouing') or die('Access is denied.');
+include './view/header.html';
+?>
+<!--面包屑导航-->
+<div class="box path">
+    <a href=".">管理后台</a>
+    <i class="path-split">\</i>
+    <a href="section.html">版块管理</a>
+    <i class="path-split">\</i>
+    <span>版块修改</span>
+</div>
+
+<!--登录or注册选项卡-->
+<div class="box">
+    <h2>版块修改</h2>
+    <form action="" method="post" id="login" class="form">
+
+        <input type="text" data-pattam=".+?" value="<?php echo $section['name'];?>" name="name" placeholder="版块名"/>
+
+        <textarea name="info" placeholder="版块简介" cols="30" rows="3"><?php echo $section['info'];?></textarea>
+
+        <input type="text" data-pattam="^\d+|$" value="<?php echo $section['order_value'];?>" name="order_value" placeholder="顺序，>=0">
+
+        <div class="form-line">
+            <label><input type="radio" name="status" value="0" <?php if($section['status']==0) echo 'checked';?>>开启</label>
+            <label><input type="radio" name="status" value="1" <?php if($section['status']==1) echo 'checked';?>>关闭</label>
+        </div>
+
+        <input type="hidden" name="bid" value="<?php echo $section['id'];?>">
+        <input type="submit" value="保存修改"/>
+    </form>
+
+</div>
+<?php include './view/footer.html';?>

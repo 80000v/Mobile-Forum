@@ -1,0 +1,66 @@
+<?php
+defined('shouing') or die('Access is denied.');
+include './view/header.html';
+?>
+<!--面包屑导航-->
+<div class="box path">
+    <a href=".">网站首页</a>
+    <i class="path-split">\</i>
+    <span><?php echo $section['name'];?></span>
+</div>
+<!--版块功能-->
+<div class="box inline-list">
+    <span>功能</span>
+    <a href="theme-add-<?php echo $section['id'];?>.html">发帖</a>
+</div>
+<!--帖子排序规则-->
+<div class="box inline-list">
+    <span>排序</span>
+    <a href="section-<?php echo $section['id'];?>-0.html" <?php if($order==0) echo 'class="active"';?>>动态</a>
+    <a href="section-<?php echo $section['id'];?>-1.html" <?php if($order==1) echo 'class="active"';?>>最新</a>
+    <a href="section-<?php echo $section['id'];?>-2.html" <?php if($order==2) echo 'class="active"';?>>点赞量</a>
+    <a href="section-<?php echo $section['id'];?>-3.html" <?php if($order==3) echo 'class="active"';?>>阅读量</a>
+</div>
+<!--帖子列表-->
+<ul class="box theme-list">
+    <?php foreach($theme as $v){ ?>
+    <li class="theme-item">
+        <a href="theme-<?php echo $v['id'];?>.html">
+            <p>
+                <?php if($v['top'] == 1) echo '<i class="icon icon-top"></i>';?>
+                <?php if($v['status'] == 1) echo '<i class="icon icon-lock"></i>';?>
+                <?php echo $v['title'];?>
+            </p>
+            <p class="theme-item-detail clearfix">
+                <span><i class="icon icon-people"></i><?php echo $v['nickname'];?></span>
+                <span><i class="icon icon-time"></i><?php echo $v['create_time'];?></span>
+                <span class="right"><i class="icon icon-comment"></i><?php echo $v['reply_num'];?></span>
+                <span class="right"><i class="icon icon-browse"></i><?php echo $v['read_num'];?></span>
+            </p>
+        </a>
+    </li>
+    <?php }?>
+    <?php if(empty($theme)){?>
+    <div class="empty">还没有任何帖子</div>
+    <?php } ?>
+</ul>
+
+<!--显示页码-->
+<div class="page">
+    <?php echo $page_show;?>
+    <a class="page-redirect" style="display: none;" href="javascript:void(0);">跳转</a>
+</div>
+
+<!--斑竹列表-->
+<div class="box">
+    <h2>斑竹列表</h2>
+    <div class="inline-list">
+        <?php foreach($moder as $v){ ?>
+        <a href="user-<?php echo $v['id'];?>.html"><?php echo $v['nickname'];?></a>
+        <?php } ?>
+    </div>
+    <?php if(empty($moder)){?>
+    <div class="empty">此版块还没有版主</div>
+    <?php } ?>
+</div>
+<?php include './view/footer.html';?>

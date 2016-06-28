@@ -1,0 +1,34 @@
+<?php
+defined('shouing') or die('Access is denied.');
+include './view/header.html';
+?>
+<!--面包屑导航-->
+<div class="box path">
+    <a href="index.html">管理后台</a>
+    <i class="path-split">\</i>
+    <span>版主管理</span>
+</div>
+
+<!--//功能条-->
+<div class="box inline-list">
+    <span>功能</span>
+    <a href="moderator-add.html">添加版主</a>
+</div>
+
+<div class="box">
+    <table>
+        <tr>
+            <th>用户名/昵称</th>
+            <th>管理版块</th>
+            <th>操作</th>
+        </tr>
+        <?php foreach($sections as $v){ ?>
+        <tr>
+            <td><?php echo $v['username'],'/',$v['nickname'];?></td>
+            <td><?php echo $v['name'];?></td>
+            <td><a class="moderator-del" href="moderator-del-<?php echo $v['id'];?>.html">删除</a></td>
+        </tr>
+        <?php } ?>
+    </table>
+</div>
+<?php include './view/footer.html';?>

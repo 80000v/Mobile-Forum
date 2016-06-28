@@ -1,0 +1,25 @@
+<?php
+defined('shouing') or die('Access is denied.');
+include './view/header.html';
+?>
+<!--面包屑导航-->
+<div class="box path">
+    <a href=".">管理后台</a>
+    <i class="path-split">\</i>
+    <a href="attachment.html">附件管理</a>
+    <i class="path-split">\</i>
+    <span>附件修改</span>
+</div>
+
+<!--登录or注册选项卡-->
+<div class="box">
+    <h2>附件修改</h2>
+    <form action="" method="post" id="attachment-modify" class="form">
+        <input type="text" data-pattam=".+?" value="<?php echo $attachment['old_name'];?>" name="old" placeholder="附件名称"/>
+        <input type="text" data-pattam="\d+?" value="<?php echo $attachment['price'];?>" name="price" placeholder="附件价格">
+        <input type="hidden" name="fid" value="<?php echo $attachment['id'];?>">
+        <input type="submit" value="保存修改"/>
+    </form>
+
+</div>
+<?php include './view/footer.html';?>

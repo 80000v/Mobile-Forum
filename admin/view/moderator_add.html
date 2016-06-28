@@ -1,0 +1,31 @@
+<?php
+defined('shouing') or die('Access is denied.');
+include './view/header.html';
+?>
+<!--面包屑导航-->
+<div class="box path">
+    <a href=".">管理后台</a>
+    <i class="path-split">\</i>
+    <a href="moderator.html">版主管理</a>
+    <i class="path-split">\</i>
+    <span>添加版主</span>
+</div>
+
+<!--登录or注册选项卡-->
+<div class="box">
+    <h2>添加版主</h2>
+
+    <form action="" method="post" class="form" id="moderator-add">
+        <input type="text" data-pattam="^\w+$" name="username" placeholder="用户名"/>
+        <div class="form-line">
+            管理版块
+            <select name="sid">
+                <?php foreach($sections as $v){ ?>
+                <option value="<?php echo $v['id'];?>"><?php echo $v['name'];?></option>
+                <?php } ?>
+            </select>
+        </div>
+        <input type="submit" value="添加版主"/>
+    </form>
+</div>
+<?php include './view/footer.html';?>

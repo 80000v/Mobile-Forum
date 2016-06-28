@@ -1,0 +1,28 @@
+<?php
+defined('shouing') or die('Access is denied.');
+include './view/header.html';
+?>
+<!--面包屑导航-->
+<div class="box path">
+    <a href=".">网站首页</a>
+    <i class="path-split">\</i>
+    <span>消息列表</span>
+</div>
+<!--消息列表-->
+<ul class="box message-list">
+    <?php foreach($message as $v){ ?>
+    <li class="message-item">
+        <p class="message-item-content"><?php echo $v['content'];?></p>
+        <p class="message-item-aside"><?php echo $v['create_time'];?></p>
+    </li>
+    <?php } ?>
+    <?php if(empty($message)){ ?>
+    <div class="empty">还没有任何消息</div>
+    <?php } ?>
+</ul>
+<!--显示页码-->
+<div class="page">
+    <?php echo $page_show;?>
+    <a class="page-redirect" style="display: none;" href="javascript:void(0);">跳转</a>
+</div>
+<?php include './view/footer.html';?>
