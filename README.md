@@ -26,5 +26,6 @@ Note : Be sure to open the Apache ReWrite function .
 
 Management Panel Domain / admin
 
-Default account ####admin
-Password ####admin
+Default account admin
+
+Password admin
