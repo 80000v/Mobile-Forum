@@ -29,7 +29,7 @@ Before the first installation config / base.config.php file to fill in the datab
 
 Then visit the install/table.php the table in the database is setup
 
-Note : Be sure to open the Apache ReWrite function .
+Note : Be sure to open the ReWrite function .
 
 ###Use
 
