@@ -1,5 +1,5 @@
 ###mobile-forum
-* [中文介绍](https://github.com/istrwei/Mobile-Forum/README_zh.md)
+* [中文介绍](/README_zh.md)
 
 A Minimalist Mobile Forum
 
