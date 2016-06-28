@@ -5,13 +5,21 @@
 ###依赖
 
 PHP version 5.3.6 or higher.
+
 The MYSQLI.
+
 MySQL version 5.0 or higher.
+
 The mod_rewrite Apache module /ngx_http_rewrite_module/ISAPI_Rewrite IIS module/IIS7+.
+
 The mod_headers module is needed if you run Carbon Forum on Apache HTTP Server.
+
 The Openssl.
+
 The Sockets.
+
 The Mbstring.
+
 The Exif.
 
 ###安装
@@ -24,5 +32,6 @@ The Exif.
 
 后台地址 域名/admin
 
-默认账号  ###admin
-密码     ###wanlinzan
+默认账号  admin
+
+密码     admin
