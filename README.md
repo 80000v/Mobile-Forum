@@ -1,14 +1,16 @@
 [![Build Status](https://travis-ci.org/istrwei/Mobile-Forum.svg?branch=master)](https://travis-ci.org/istrwei/Mobile-Forum)
-#mobile-forum#
+
+**mobile-forum**
+
 * [中文介绍](/README_zh.md)
 
 A Minimalist Mobile Forum
 
-#Demo/Official Website
+**Demo/Official Website**
 
 * [mobile-forum.ml](http://mobile-forum.ml)
 
-#Requirements
+**Requirements**
 
 PHP version 5.3.6 or higher.
 
@@ -28,7 +30,7 @@ The Mbstring.
 
 The Exif.
 
-#Install
+**Install**
 
 Before the first installation config / base.config.php file to fill in the database information
 
@@ -36,7 +38,7 @@ Then visit the install/table.php the table in the database is setup
 
 Note : Be sure to open the ReWrite function .
 
-#Use
+**Use**
 
 Management Panel Domain/admin
 
