@@ -22,7 +22,8 @@ The Mbstring.
 
 The Exif.
 
-**安装**:construction_site:
+**安装**
+:construction_site:
 
 安装前先到config/base.config.php文件中把数据库信息填写好，然后访问install/table.php安装
 
