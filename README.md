@@ -1,7 +1,8 @@
 [![Build Status](https://travis-ci.org/istrwei/Mobile-Forum.svg?branch=master)](https://travis-ci.org/istrwei/Mobile-Forum)
 
 **mobile-forum**
-:8ball: 
+
+:thumbsup::robot:
 
 * [中文介绍](/README_zh.md)
 
